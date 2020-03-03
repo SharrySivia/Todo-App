@@ -1,0 +1,21 @@
+.Todo {
+  font-size: 1.2rem;
+  font-family: -apple-system;
+  cursor: pointer;
+  border-bottom: 1px solid #abafb3;
+  padding: 1rem 0;
+  color: #fafafa;
+  overflow: auto;
+}
+
+.Todo::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.Todo::-webkit-scrollbar-track {
+  margin: 0.5rem 0;
+}
+
+.Todo::-webkit-scrollbar-thumb {
+  background-color: #abafb3;
+}
