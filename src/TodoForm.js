@@ -19,7 +19,7 @@ class TodoForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
     if (this.state.task) {
-      const newTodo = { ...this.state, id: uuid() };
+      const newTodo = { ...this.state, id: uuid(), compeleted: false };
       this.props.addTodo(newTodo);
       this.setState({ task: "" });
     }
@@ -33,6 +33,7 @@ class TodoForm extends Component {
           onChange={this.handleChange}
           value={this.state.task}
           placeholder="Enter todo"
+          autoFocus
         />
         <button>Add Task</button>
       </form>

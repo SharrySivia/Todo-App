@@ -5,17 +5,48 @@
   border-bottom: 1px solid #abafb3;
   padding: 1rem 0;
   color: #fafafa;
-  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* transition: opacity 0.4s ease; */
+}
+.Todo li {
+  display: inline-block;
+  margin-left: 1rem;
 }
 
-.Todo::-webkit-scrollbar {
-  width: 0.4rem;
+.Todo i {
+  color: #fafafa;
+}
+.Todo form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.Todo::-webkit-scrollbar-track {
-  margin: 0.5rem 0;
+.Todo form button {
+  font-family: inherit;
+  font-size: 0.8rem;
+  border: none;
+  outline: none;
+  padding: 0.2rem 0.8rem;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #61dbfb;
+  color: #fbfbfc;
 }
 
-.Todo::-webkit-scrollbar-thumb {
-  background-color: #abafb3;
+.Todo input {
+  padding: 0;
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #fafafa;
+}
+
+.completed {
+  color: rgb(156, 156, 156);
+  text-decoration: line-through;
 }
