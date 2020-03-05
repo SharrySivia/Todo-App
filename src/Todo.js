@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./Todo.css";
 class Todo extends Component {
   constructor(props) {
@@ -27,7 +27,11 @@ class Todo extends Component {
 
   handleUpdate(evt) {
     evt.preventDefault();
-    this.props.update(this.props.id, this.state.task);
+    if (this.state.task) {
+      this.props.update(this.props.id, this.state.task);
+    } else {
+      this.setState({ task: this.props.task });
+    }
     this.toggleForm();
   }
 
@@ -36,10 +40,9 @@ class Todo extends Component {
   }
 
   render() {
-    let result;
-    if (this.state.isEditing) {
-      result = (
-        <div className="Todo">
+    return (
+      <div className="Todo">
+        {this.state.isEditing ? (
           <form onSubmit={this.handleUpdate}>
             <input
               type="text"
@@ -50,32 +53,31 @@ class Todo extends Component {
             />
             <button>Save</button>
           </form>
-        </div>
-      );
-    } else {
-      result = (
-        <div className="Todo">
-          <div>
-            <i
-              class={`${this.props.completed ? "fas" : "far"} fa-check-circle`}
-              onClick={this.handleToggle}
-            ></i>
-            <li className={this.props.completed ? "completed" : ""}>
-              {this.props.task}
-            </li>
-          </div>
-          <div>
-            <i
-              class="fas fa-pen"
-              onClick={this.toggleForm}
-              style={{ marginRight: "1rem" }}
-            ></i>
-            <i class="fas fa-trash-alt" onClick={this.handleRemove}></i>
-          </div>
-        </div>
-      );
-    }
-    return result;
+        ) : (
+          <Fragment>
+            <div>
+              <i
+                class={`${
+                  this.props.completed ? "fas" : "far"
+                } fa-check-circle`}
+                onClick={this.handleToggle}
+              ></i>
+              <li className={this.props.completed ? "completed" : ""}>
+                {this.props.task}
+              </li>
+            </div>
+            <div>
+              <i
+                class="fas fa-pen"
+                onClick={this.toggleForm}
+                style={{ marginRight: "1rem" }}
+              ></i>
+              <i class="fas fa-trash-alt" onClick={this.handleRemove}></i>
+            </div>
+          </Fragment>
+        )}
+      </div>
+    );
   }
 }
 

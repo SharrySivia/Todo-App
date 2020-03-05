@@ -4,7 +4,7 @@
   cursor: pointer;
   border-bottom: 1px solid #abafb3;
   padding: 1rem 0;
-  color: #fafafa;
+  color: #d8dde2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,8 +16,14 @@
 }
 
 .Todo i {
-  color: #fafafa;
+  color: #abafb3;
+  transition: color 0.1s ease;
 }
+
+.Todo i:hover {
+  color: #d8dde2;
+}
+
 .Todo form {
   width: 100%;
   display: flex;
