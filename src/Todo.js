@@ -57,7 +57,7 @@ class Todo extends Component {
           <Fragment>
             <div>
               <i
-                class={`${
+                className={`${
                   this.props.completed ? "fas" : "far"
                 } fa-check-circle`}
                 onClick={this.handleToggle}
@@ -68,11 +68,11 @@ class Todo extends Component {
             </div>
             <div>
               <i
-                class="fas fa-pen"
+                className="fas fa-pen"
                 onClick={this.toggleForm}
                 style={{ marginRight: "1rem" }}
               ></i>
-              <i class="fas fa-trash-alt" onClick={this.handleRemove}></i>
+              <i className="fas fa-trash-alt" onClick={this.handleRemove}></i>
             </div>
           </Fragment>
         )}
