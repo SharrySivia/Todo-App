@@ -39,43 +39,49 @@ class Todo extends Component {
     this.props.toggleTodo(this.props.id);
   }
 
+  renderForm(task) {
+    return (
+      <form onSubmit={this.handleUpdate}>
+        <input
+          type="text"
+          name="task"
+          value={task}
+          onChange={this.handleChange}
+          autoFocus
+        />
+        <button>Save</button>
+      </form>
+    );
+  }
+
+  renderTask(task, completed) {
+    return (
+      <Fragment>
+        <div>
+          <i
+            className={` far fa-${completed ? "check-circle" : "circle"}`}
+            onClick={this.handleToggle}
+          ></i>
+          <li className={completed ? "completed" : ""}>{task}</li>
+        </div>
+        <div>
+          <i
+            className={`fas fa-pen ${completed ? "disabled" : ""}`}
+            onClick={completed ? null : this.toggleForm}
+            style={{ marginRight: "1rem" }}
+          ></i>
+          <i className="fas fa-trash-alt" onClick={this.handleRemove}></i>
+        </div>
+      </Fragment>
+    );
+  }
+
   render() {
+    const { isEditing, task } = this.state;
+    const { completed } = this.props;
     return (
       <div className="Todo">
-        {this.state.isEditing ? (
-          <form onSubmit={this.handleUpdate}>
-            <input
-              type="text"
-              name="task"
-              value={this.state.task}
-              onChange={this.handleChange}
-              autoFocus
-            />
-            <button>Save</button>
-          </form>
-        ) : (
-          <Fragment>
-            <div>
-              <i
-                className={`${
-                  this.props.completed ? "fas" : "far"
-                } fa-check-circle`}
-                onClick={this.handleToggle}
-              ></i>
-              <li className={this.props.completed ? "completed" : ""}>
-                {this.props.task}
-              </li>
-            </div>
-            <div>
-              <i
-                className="fas fa-pen"
-                onClick={this.toggleForm}
-                style={{ marginRight: "1rem" }}
-              ></i>
-              <i className="fas fa-trash-alt" onClick={this.handleRemove}></i>
-            </div>
-          </Fragment>
-        )}
+        {isEditing ? this.renderForm(task) : this.renderTask(task, completed)}
       </div>
     );
   }

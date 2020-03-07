@@ -2,26 +2,27 @@
   font-size: 1.2rem;
   font-family: -apple-system;
   cursor: pointer;
-  border-bottom: 1px solid #abafb3;
   padding: 1rem 0;
-  color: #d8dde2;
+  color: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* transition: opacity 0.4s ease; */
+  animation: fade-in 0.4s ease;
 }
+
 .Todo li {
   display: inline-block;
   margin-left: 1rem;
+  text-transform: capitalize;
 }
 
 .Todo i {
-  color: #abafb3;
+  color: #3459ff;
   transition: color 0.1s ease;
 }
 
 .Todo i:hover {
-  color: #d8dde2;
+  color: #002fff;
 }
 
 .Todo form {
@@ -39,8 +40,13 @@
   padding: 0.2rem 0.8rem;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #61dbfb;
+  background-color: #3459ff;
   color: #fbfbfc;
+  transition: background-color 0.2s ease;
+}
+
+.Todo form button:hover {
+  background-color: #002fff;
 }
 
 .Todo input {
@@ -49,10 +55,34 @@
   background-color: transparent;
   border: none;
   outline: none;
-  color: #fafafa;
+  color: #444;
 }
 
 .completed {
   color: rgb(156, 156, 156);
   text-decoration: line-through;
+}
+
+.disabled {
+  color: #d2daff !important;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

@@ -1,11 +1,11 @@
 .TodoForm {
-  border-bottom: 1px solid #abafb3;
-  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #c0ccff;
+  padding-bottom: 2rem;
 }
 
 .TodoForm input {
   font-family: inherit;
-  background-color: #fbfbfc;
+  background-color: #f3f9ff;
   border: none;
   font-size: 1rem;
   padding: 0.7rem 1rem;
@@ -13,14 +13,9 @@
   outline: none;
   margin-right: 1rem;
   width: 30%;
-  border: 2px solid transparent;
-  transition: border 0.2s ease;
-  font-weight: 600;
-  color: #333;
-}
-
-.TodoForm input:focus {
-  border: 2px solid #61dbfb;
+  border: 1px solid #3459ff;
+  font-weight: 200;
+  color: #444;
 }
 
 .TodoForm button {
@@ -31,12 +26,12 @@
   padding: 0.7rem 1.5rem;
   cursor: pointer;
   border-radius: 5px;
-  background-color: rgb(93, 201, 228);
+  background-color: #3459ff;
   color: #fbfbfc;
-  font-weight: 600;
+  font-weight: 200;
   transition: background-color 0.2s ease;
 }
 
 .TodoForm button:hover {
-  background-color: rgb(76, 184, 211);
+  background-color: #002fff;
 }
