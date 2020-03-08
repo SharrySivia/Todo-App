@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
+import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import "./TodoList.css";
 // import uuid from "uuid";
 
@@ -48,6 +49,17 @@ class TodoList extends Component {
     this.setState({ todos: updatedTodos });
   }
 
+  componentDidMount() {
+    let storedTodos = JSON.parse(localStorage.getItem("Todos"));
+    if (storedTodos) {
+      this.setState({ todos: storedTodos });
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("Todos", JSON.stringify(this.state.todos));
+  }
+
   render() {
     const todo = this.state.todos.map(td => (
       <Todo
@@ -65,7 +77,15 @@ class TodoList extends Component {
       <div className="TodoList">
         <h2 className="TodoList-heading">Todo List</h2>
         <TodoForm addTodo={this.addTodo} />
-        <ul className="TodoList-list">{todo}</ul>
+        <ul className="TodoList-list">
+          <CSSTransitionGroup
+            transitionName="task"
+            transitionEnterTimeout={200}
+            transitionLeaveTimeout={100}
+          >
+            {todo}
+          </CSSTransitionGroup>
+        </ul>
       </div>
     );
   }
